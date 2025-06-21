@@ -1,0 +1,1501 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #0052D4; /* Deep Blue */
+    --secondary-color: #4364F7; /* Bright Blue */
+    --accent-color: #6FB1FC; /* Light Blue */
+    --background-gradient: linear-gradient(135deg, #0052D4 0%, #4364F7 100%); /* Enhanced gradient */
+    --card-background: rgba(255, 255, 255, 0.95); /* Slightly less transparent */
+    --text-dark: #1a202c;
+    --text-light: #4a5568;
+    --text-white: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 12px 25px rgba(0, 0, 0, 0.15);
+    --border-radius: 15px; /* Slightly larger border-radius */
+    --transition-speed: 0.4s; /* Slower transition for smoother effects */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--background-gradient);
+    color: var(--text-dark);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: 950px; /* Slightly wider container */
+    margin: 40px auto;
+    padding: 30px;
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* Intro Section */
+.intro-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+    background: var(--card-background);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(15px); /* Increased blur */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    transition: transform var(--transition-speed) ease-out, box-shadow var(--transition-speed) ease-out;
+}
+
+.intro-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.intro-image {
+    flex: 1;
+    text-align: center;
+}
+
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 280px; /* Slightly larger image */
+    animation: float 3s ease-in-out infinite; /* Floating animation */
+}
+
+.intro-text {
+    flex: 1.5;
+}
+
+.intro-text h1 {
+    font-size: 3em; /* Larger heading */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.intro-text p {
+    font-size: 1.2em; /* Larger paragraph text */
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+/* Search Section */
+.search-section {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    margin-bottom: 40px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#odbInput {
+    flex-grow: 1;
+    padding: 18px 25px; /* Larger padding */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1.2em; /* Larger font size */
+    text-align: left;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    font-weight: 500;
+}
+
+#odbInput::placeholder {
+    color: #a0aec0;
+}
+
+#odbInput:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(67, 100, 247, 0.3); /* Larger shadow on focus */
+    outline: none;
+}
+
+#searchButton {
+    padding: 18px 35px; /* Larger padding */
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.2em; /* Larger font size */
+    font-weight: 700;
+    transition: all var(--transition-speed) ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+#searchButton:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15); /* Subtle hover effect */
+    transition: all 0.7s ease-out;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+#searchButton:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#searchButton i {
+    font-size: 1.1em;
+    position: relative;
+    z-index: 1;
+}
+
+#searchButton:hover {
+    opacity: 1;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px); /* More pronounced lift */
+}
+
+#searchButton:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-light);
+}
+
+/* Status Messages */
+.status-message {
+    margin-top: 20px;
+    padding: 15px 20px; /* Larger padding */
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.loading {
+    color: var(--primary-color);
+    background-color: rgba(0, 82, 212, 0.15);
+}
+
+.error {
+    color: #c53030;
+    background-color: #fed7d7;
+}
+
+/* Results Section */
+.results-section {
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    animation: fadeIn 0.5s ease-out;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.results-section h2 {
+    font-size: 2.2em; /* Larger heading */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Slightly larger min-width */
+    gap: 25px; /* Increased gap */
+}
+
+.result-card {
+    background-color: var(--text-white);
+    padding: 30px 25px; /* Larger padding */
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(67, 100, 247, 0.05), rgba(0, 82, 212, 0.05)); /* Subtle gradient overlay */
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.result-card:hover:before {
+    opacity: 1;
+}
+
+.result-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+.card-icon {
+    font-size: 3em; /* Larger icon */
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    display: block;
+    transition: transform var(--transition-speed) ease;
+}
+
+.result-card:hover .card-icon {
+    transform: scale(1.1); /* Icon grows on hover */
+}
+
+.label {
+    font-size: 1em; /* Slightly larger label */
+    color: var(--text-light);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 1.5em; /* Larger value */
+    font-weight: 700;
+    color: var(--text-dark);
+    word-wrap: break-word;
+}
+
+.map-card {
+    grid-column: span 2; /* Make map card wider if possible */
+}
+
+.map-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color var(--transition-speed) ease;
+    font-size: 1.2em; /* Slightly larger for link */
+}
+
+.map-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.external-link-icon {
+    font-size: 1em;
+}
+
+/* Footer */
+.page-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: var(--text-white); /* White text for footer */
+    font-size: 0.9em;
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(5px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+    }
+    .intro-section {
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+    }
+    .intro-text h1 {
+        font-size: 2.5em;
+    }
+    .intro-text p {
+        font-size: 1.1em;
+    }
+    .search-box {
+        flex-direction: column;
+        gap: 15px;
+    }
+    #searchButton {
+        width: 100%;
+    }
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+    .map-card {
+        grid-column: span 1; /* Reset span on smaller screens */
+    }
+    .result-card {
+        padding: 25px 20px;
+    }
+    .card-icon {
+        font-size: 2.5em;
+    }
+    .value {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .intro-text h1 {
+        font-size: 2.2em;
+    }
+    .intro-text p {
+        font-size: 1em;
+    }
+    #odbInput, #searchButton {
+        font-size: 1.1em;
+        padding: 15px 20px;
+    }
+    .results-section h2 {
+        font-size: 1.8em;
+    }
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-text h1 {
+        font-size: 1.8em;
+    }
+    #odbInput, #searchButton {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+    .results-section h2 {
+        font-size: 1.5em;
+    }
+    .results-grid {
+        grid-template-columns: 1fr; /* Stack cards on very small screens */
+    }
+    .intro-section, .search-section, .results-section {
+        padding: 20px;
+    }
+}
+
+/* Background animation for network/signals */
+body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(67, 100, 247, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at bottom right, rgba(0, 82, 212, 0.1) 0%, transparent 30%);
+    background-size: 200% 200%;
+    animation: backgroundPan 20s linear infinite alternate;
+    z-index: 0;
+}
+
+@keyframes backgroundPan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Login Page Specific Styles (from index.html, integrated and enhanced) */
+.login-container {
+    background-color: var(--card-background);
+    padding: 40px 50px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 480px; /* Slightly wider login container */
+    text-align: center;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform var(--transition-speed) ease-out, box-shadow var(--transition-speed) ease-out;
+}
+
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h1 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 2.5em; /* Larger login heading */
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.login-container p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.input-group {
+    margin-bottom: 25px; /* Increased margin */
+    text-align: right;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px; /* Increased margin */
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 1.1em;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 20px; /* Larger padding */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1.1em; /* Larger font size */
+    font-family: var(--font-family, 'Tajawal', sans-serif);
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.input-group input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(67, 100, 247, 0.3);
+    outline: none;
+}
+
+#loginButton {
+    width: 100%;
+    padding: 16px 25px; /* Larger padding */
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.2em; /* Larger font size */
+    font-weight: 700;
+    transition: all var(--transition-speed) ease;
+    margin-top: 15px; /* Increased margin */
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+#loginButton:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.7s ease-out;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+#loginButton:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#loginButton:hover {
+    opacity: 1;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px);
+}
+
+#loginError {
+    color: #f44336;
+    margin-top: 20px; /* Increased margin */
+    font-weight: 500;
+    min-height: 1.2em;
+    font-size: 1em;
+}
+
+/* Responsive adjustments for login page */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .login-container h1 {
+        font-size: 2em;
+    }
+    .input-group input, #loginButton {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+}
+
+
+
+/* Additional SVG animations and fiber optic themed icons */
+.fiber-icon {
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Network signal animation for icons */
+.network-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.network-icon:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 2s linear infinite;
+    opacity: 0;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Enhanced card icons with fiber optic theme */
+.result-card .fas.fa-network-wired {
+    animation: networkPulse 3s ease-in-out infinite;
+}
+
+.result-card .fas.fa-map-marker-alt {
+    animation: locationBounce 2s ease-in-out infinite;
+}
+
+.result-card .fas.fa-building {
+    animation: buildingGlow 4s ease-in-out infinite;
+}
+
+.result-card .fas.fa-map-marked-alt {
+    animation: mapSpin 6s linear infinite;
+}
+
+@keyframes networkPulse {
+    0%, 100% { 
+        color: var(--secondary-color);
+        text-shadow: 0 0 5px rgba(67, 100, 247, 0.3);
+    }
+    50% { 
+        color: var(--accent-color);
+        text-shadow: 0 0 15px rgba(111, 177, 252, 0.6);
+    }
+}
+
+@keyframes locationBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes buildingGlow {
+    0%, 100% { 
+        color: var(--secondary-color);
+        filter: drop-shadow(0 0 3px rgba(67, 100, 247, 0.3));
+    }
+    50% { 
+        color: var(--primary-color);
+        filter: drop-shadow(0 0 8px rgba(0, 82, 212, 0.5));
+    }
+}
+
+@keyframes mapSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading spinner enhancement */
+.fa-spinner {
+    animation: spinEnhanced 1s linear infinite !important;
+}
+
+@keyframes spinEnhanced {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Search button icon animation */
+#searchButton .fas.fa-search {
+    transition: transform var(--transition-speed) ease;
+}
+
+#searchButton:hover .fas.fa-search {
+    transform: scale(1.2) rotate(15deg);
+}
+
+/* Login page icon enhancement */
+.login-container .fas.fa-lock {
+    animation: lockShake 3s ease-in-out infinite;
+}
+
+@keyframes lockShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+}
+
+/* Fiber optic data flow effect */
+.data-flow {
+    position: relative;
+    overflow: hidden;
+}
+
+.data-flow:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(67, 100, 247, 0.4), transparent);
+    animation: dataFlow 3s linear infinite;
+}
+
+@keyframes dataFlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Enhanced hover effects for interactive elements */
+.interactive-glow {
+    transition: all var(--transition-speed) ease;
+    position: relative;
+}
+
+.interactive-glow:hover {
+    filter: drop-shadow(0 0 10px rgba(67, 100, 247, 0.4));
+}
+
+/* Particle effect for background */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    animation: particleFloat 8s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Signal strength indicator animation */
+.signal-bars {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 20px;
+}
+
+.signal-bar {
+    width: 3px;
+    background: var(--secondary-color);
+    border-radius: 1px;
+    animation: signalStrength 1.5s ease-in-out infinite;
+}
+
+.signal-bar:nth-child(1) {
+    height: 25%;
+    animation-delay: 0s;
+}
+
+.signal-bar:nth-child(2) {
+    height: 50%;
+    animation-delay: 0.2s;
+}
+
+.signal-bar:nth-child(3) {
+    height: 75%;
+    animation-delay: 0.4s;
+}
+
+.signal-bar:nth-child(4) {
+    height: 100%;
+    animation-delay: 0.6s;
+}
+
+@keyframes signalStrength {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Fiber optic cable connection animation */
+.cable-connection {
+    position: relative;
+    display: inline-block;
+}
+
+.cable-connection:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary-color), transparent);
+    animation: cableSignal 2s linear infinite;
+}
+
+@keyframes cableSignal {
+    0% {
+        transform: translateY(-50%) scaleX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50%) scaleX(1);
+        opacity: 0;
+    }
+}
+
+/* Enhanced focus states for accessibility */
+input:focus, button:focus {
+    outline: 3px solid rgba(67, 100, 247, 0.5);
+    outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: color var(--transition-speed) ease,
+                background-color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease,
+                opacity var(--transition-speed) ease;
+}
+
+/* Performance optimization for animations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Advanced Responsive Design Enhancements */
+
+/* Extra Large Screens (1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .intro-text h1 {
+        font-size: 3.5em;
+    }
+    
+    .intro-text p {
+        font-size: 1.3em;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+    
+    .result-card {
+        padding: 35px 30px;
+    }
+    
+    .card-icon {
+        font-size: 3.5em;
+    }
+}
+
+/* Large Screens (1200px to 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .container {
+        max-width: 1100px;
+    }
+    
+    .intro-text h1 {
+        font-size: 3.2em;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Medium-Large Screens (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 95%;
+        padding: 25px;
+    }
+    
+    .intro-section {
+        padding: 35px;
+        gap: 30px;
+    }
+    
+    .intro-text h1 {
+        font-size: 2.8em;
+    }
+    
+    .intro-text p {
+        font-size: 1.15em;
+    }
+    
+    .search-section {
+        padding: 25px;
+    }
+    
+    #odbInput, #searchButton {
+        font-size: 1.15em;
+        padding: 16px 22px;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .map-card {
+        grid-column: span 2;
+    }
+}
+
+/* Medium Screens (768px to 991px) - Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 90%;
+        padding: 20px;
+        margin: 30px auto;
+    }
+    
+    .intro-section {
+        flex-direction: column;
+        padding: 30px;
+        gap: 25px;
+        text-align: center;
+    }
+    
+    .intro-image img {
+        max-height: 220px;
+    }
+    
+    .intro-text h1 {
+        font-size: 2.5em;
+    }
+    
+    .intro-text p {
+        font-size: 1.1em;
+    }
+    
+    .search-box {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    #odbInput {
+        flex-grow: 1;
+        font-size: 1.1em;
+        padding: 15px 20px;
+    }
+    
+    #searchButton {
+        font-size: 1.1em;
+        padding: 15px 25px;
+        white-space: nowrap;
+    }
+    
+    .results-section h2 {
+        font-size: 2em;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+    
+    .result-card {
+        padding: 25px 20px;
+    }
+    
+    .card-icon {
+        font-size: 2.8em;
+    }
+    
+    .value {
+        font-size: 1.4em;
+    }
+    
+    .map-card {
+        grid-column: span 2;
+    }
+    
+    /* Login page adjustments for tablets */
+    .login-container {
+        max-width: 500px;
+        padding: 35px 40px;
+    }
+    
+    .login-container h1 {
+        font-size: 2.3em;
+    }
+}
+
+/* Small-Medium Screens (576px to 767px) - Large phones */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 95%;
+        padding: 15px;
+        margin: 20px auto;
+    }
+    
+    .intro-section {
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .intro-image img {
+        max-height: 180px;
+    }
+    
+    .intro-text h1 {
+        font-size: 2.2em;
+        line-height: 1.2;
+    }
+    
+    .intro-text p {
+        font-size: 1em;
+    }
+    
+    .search-section {
+        padding: 20px;
+    }
+    
+    .search-box {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    #odbInput {
+        width: 100%;
+        font-size: 1.1em;
+        padding: 14px 18px;
+    }
+    
+    #searchButton {
+        width: 100%;
+        font-size: 1.1em;
+        padding: 14px 20px;
+    }
+    
+    .results-section {
+        padding: 20px;
+    }
+    
+    .results-section h2 {
+        font-size: 1.8em;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .result-card {
+        padding: 20px 15px;
+    }
+    
+    .card-icon {
+        font-size: 2.5em;
+        margin-bottom: 12px;
+    }
+    
+    .label {
+        font-size: 0.95em;
+        margin-bottom: 6px;
+    }
+    
+    .value {
+        font-size: 1.2em;
+    }
+    
+    .map-card {
+        grid-column: span 2;
+    }
+    
+    .map-link {
+        font-size: 1.1em;
+    }
+    
+    /* Login page adjustments */
+    .login-container {
+        max-width: 90%;
+        padding: 30px 25px;
+    }
+    
+    .login-container h1 {
+        font-size: 2em;
+    }
+    
+    .input-group input, #loginButton {
+        font-size: 1.1em;
+        padding: 14px 18px;
+    }
+}
+
+/* Small Screens (480px to 575px) - Standard phones */
+@media (min-width: 480px) and (max-width: 575px) {
+    .container {
+        padding: 12px;
+        margin: 15px auto;
+    }
+    
+    .intro-section, .search-section, .results-section {
+        padding: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .intro-image img {
+        max-height: 150px;
+    }
+    
+    .intro-text h1 {
+        font-size: 2em;
+    }
+    
+    .intro-text p {
+        font-size: 0.95em;
+    }
+    
+    #odbInput, #searchButton {
+        font-size: 1em;
+        padding: 13px 16px;
+    }
+    
+    .results-section h2 {
+        font-size: 1.6em;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .result-card {
+        padding: 18px 12px;
+    }
+    
+    .card-icon {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    
+    .value {
+        font-size: 1.1em;
+    }
+    
+    .map-card {
+        grid-column: span 2;
+    }
+    
+    /* Login page */
+    .login-container {
+        padding: 25px 20px;
+    }
+    
+    .login-container h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* Extra Small Screens (up to 479px) - Small phones */
+@media (max-width: 479px) {
+    .container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    
+    .intro-section, .search-section, .results-section {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+    }
+    
+    .intro-image img {
+        max-height: 120px;
+    }
+    
+    .intro-text h1 {
+        font-size: 1.7em;
+        line-height: 1.1;
+    }
+    
+    .intro-text p {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+    
+    .search-box {
+        gap: 10px;
+    }
+    
+    #odbInput, #searchButton {
+        font-size: 0.95em;
+        padding: 12px 14px;
+    }
+    
+    .results-section h2 {
+        font-size: 1.4em;
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .result-card {
+        padding: 15px 10px;
+    }
+    
+    .card-icon {
+        font-size: 2em;
+        margin-bottom: 8px;
+    }
+    
+    .label {
+        font-size: 0.85em;
+        margin-bottom: 4px;
+    }
+    
+    .value {
+        font-size: 1em;
+        line-height: 1.3;
+    }
+    
+    .map-link {
+        font-size: 0.95em;
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    /* Login page for very small screens */
+    .login-container {
+        padding: 20px 15px;
+        max-width: 95%;
+    }
+    
+    .login-container h1 {
+        font-size: 1.6em;
+    }
+    
+    .login-container p {
+        font-size: 0.95em;
+    }
+    
+    .input-group {
+        margin-bottom: 20px;
+    }
+    
+    .input-group label {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+    
+    .input-group input, #loginButton {
+        font-size: 0.95em;
+        padding: 11px 13px;
+    }
+    
+    #loginError {
+        font-size: 0.9em;
+        margin-top: 15px;
+    }
+}
+
+/* Landscape orientation adjustments for mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    .intro-section {
+        flex-direction: row;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .intro-image {
+        flex: 0.8;
+    }
+    
+    .intro-image img {
+        max-height: 100px;
+    }
+    
+    .intro-text {
+        flex: 1.2;
+    }
+    
+    .intro-text h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+    
+    .intro-text p {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    
+    .search-section, .results-section {
+        padding: 15px;
+    }
+    
+    .login-container {
+        padding: 20px 30px;
+        max-width: 400px;
+    }
+    
+    .login-container h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    .login-container p {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+    
+    .input-group {
+        margin-bottom: 15px;
+    }
+}
+
+/* High DPI/Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card-icon, .login-container .fas {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .intro-image img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets for better usability */
+    #odbInput, #searchButton, .input-group input, #loginButton {
+        min-height: 44px; /* iOS recommended minimum touch target */
+    }
+    
+    .result-card {
+        min-height: 120px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .result-card:hover, .intro-section:hover, .login-container:hover {
+        transform: none;
+        box-shadow: var(--shadow-light);
+    }
+    
+    #searchButton:hover, #loginButton:hover {
+        transform: none;
+        opacity: 1;
+    }
+    
+    /* Enhance focus states for touch navigation */
+    *:focus {
+        outline: 3px solid rgba(67, 100, 247, 0.6);
+        outline-offset: 2px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .intro-section, .search-section, .results-section, .login-container {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .search-box, #loginButton {
+        display: none !important;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    .card-icon {
+        color: #666 !important;
+    }
+    
+    .page-footer {
+        background: none !important;
+        color: #666 !important;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000080;
+        --secondary-color: #0000FF;
+        --text-dark: #000000;
+        --text-light: #333333;
+        --border-color: #666666;
+    }
+    
+    .result-card {
+        border-width: 2px;
+    }
+    
+    #odbInput, .input-group input {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .intro-image img {
+        animation: none;
+    }
+    
+    .card-icon {
+        animation: none;
+    }
+    
+    .result-card:hover .card-icon {
+        transform: none;
+    }
+    
+    body:before {
+        animation: none;
+    }
+    
+    .particle {
+        display: none;
+    }
+}
+
+/* Dark mode support (if user prefers dark color scheme) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        --card-background: rgba(30, 30, 50, 0.95);
+        --text-dark: #ffffff;
+        --text-light: #b0b0b0;
+        --border-color: #404040;
+    }
+    
+    .login-container, .intro-section, .search-section, .results-section {
+        background: var(--card-background);
+        color: var(--text-dark);
+    }
+    
+    #odbInput, .input-group input {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-dark);
+        border-color: var(--border-color);
+    }
+    
+    #odbInput::placeholder {
+        color: #888;
+    }
+    
+    .result-card {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-dark);
+    }
+}
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - مستكشف الألياف</title>
+    <link rel="stylesheet" href="style.css"> <!-- Reuse main style for consistency, or create login_style.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        /* Additional styles specific to login page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--background-gradient, linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)); /* Fallback gradient */
+        }
+        .login-container {
+            background-color: var(--card-background, #ffffff);
+            padding: 40px 50px;
+            border-radius: var(--border-radius, 12px);
+            box-shadow: var(--shadow-medium, 0 10px 15px rgba(0, 0, 0, 0.1));
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        .login-container h1 {
+            color: var(--primary-color, #0a3d62);
+            margin-bottom: 15px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .login-container p {
+            color: var(--text-secondary, #546e7a);
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary, #263238);
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color, #e0e0e0);
+            border-radius: var(--border-radius, 8px);
+            font-size: 1em;
+            font-family: var(--font-family, 'Tajawal', sans-serif);
+            transition: border-color var(--transition-speed, 0.3s) ease, box-shadow var(--transition-speed, 0.3s) ease;
+        }
+        .input-group input:focus {
+            border-color: var(--secondary-color, #1e88e5);
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+            outline: none;
+        }
+        #loginButton {
+            width: 100%;
+            padding: 14px 25px;
+            background: linear-gradient(to right, var(--secondary-color, #1e88e5), var(--primary-color, #0a3d62));
+            color: var(--text-white, #ffffff);
+            border: none;
+            border-radius: var(--border-radius, 8px);
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all var(--transition-speed, 0.3s) ease;
+            margin-top: 10px;
+        }
+        #loginButton:hover {
+            opacity: 0.9;
+            box-shadow: var(--shadow-medium, 0 10px 15px rgba(0, 0, 0, 0.1));
+            transform: translateY(-2px);
+        }
+        #loginError {
+            color: var(--error-color, #f44336);
+            margin-top: 15px;
+            font-weight: 500;
+            min-height: 1.2em; /* Prevent layout shift */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1><i class="fas fa-lock"></i> تسجيل الدخول</h1>
+        <p>الرجاء إدخال بيانات الاعتماد للوصول إلى الأداة.</p>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div id="loginError"></div>
+            <button type="submit" id="loginButton">دخول</button>
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
