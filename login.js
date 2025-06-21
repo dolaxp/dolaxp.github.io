@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginErrorDiv = document.getElementById("loginError");
 
     // --- بيانات الاعتماد (يمكن تغييرها هنا) ---
-    const correctUsername = "Admin";
+    const correctUsername = "admin";
     const correctPassword = "123123123";
     // ----------------------------------------
 
